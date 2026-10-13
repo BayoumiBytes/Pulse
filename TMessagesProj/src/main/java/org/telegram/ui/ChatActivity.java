@@ -24916,9 +24916,10 @@ public class ChatActivity extends BaseFragment implements
     private boolean sponsoredMessagesAdded;
     private Pattern sponsoredUrlPattern;
     private MessageObject botSponsoredMessage;
+    private boolean DISABLED_SPONSORED_MESSAGES = true;
     private void addSponsoredMessages(boolean animated) {
-      return;
-        if (sponsoredMessagesAdded || chatMode != 0 || !ChatObject.isChannel(currentChat) && !UserObject.isBot(currentUser) || !forwardEndReached[0] || getUserConfig().isPremium() && getMessagesController().isSponsoredDisabled() || isReport()) {
+
+        if (DISABLED_SPONSORED_MESSAGES || sponsoredMessagesAdded || chatMode != 0 || !ChatObject.isChannel(currentChat) && !UserObject.isBot(currentUser) || !forwardEndReached[0] || getUserConfig().isPremium() && getMessagesController().isSponsoredDisabled() || isReport()) {
             return;
         }
         MessagesController.SponsoredMessagesInfo res = getMessagesController().getSponsoredMessages(dialog_id);
